@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Today;
-use App\Http\Resources\TodayTaskResource as TodayTaskResource;
 
-class TodayController extends Controller
+class UpcomingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class TodayController extends Controller
      */
     public function index()
     {
-        $today_data=Today::all();
-        return TodayTaskResource::collection($today_data);
+        //
     }
 
     /**
@@ -37,17 +34,7 @@ class TodayController extends Controller
      */
     public function store(Request $request)
     {
-        $rules=array(
-            'title' => 'required',
-            'completed' => 'required'
-        );
-        $this->validate($request,$rules);
-        return Today::create([
-            'title' => $request->input('title'),
-            'completed' => $request->completed,
-            'approved' => $request->approved,
-            'taskId' =>request->taskId
-        ]);
+        //
     }
 
     /**
@@ -81,12 +68,7 @@ class TodayController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $today_task= Today::FindOrFail($id);
-        $rules=array(
-            'title' => 'required',
-            'completed' => 'required'
-        );
-        $today_task->update($request->all());
+        //
     }
 
     /**
@@ -97,7 +79,6 @@ class TodayController extends Controller
      */
     public function destroy($id)
     {
-        $today_task = Today::FindOrFail($id);
-        $today_task->delete();
+        //
     }
 }
